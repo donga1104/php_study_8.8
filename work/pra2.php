@@ -1,28 +1,25 @@
 <?php
-// クラス
-class Post{
 
-  // プロパティ
-  public $text;
-  public $likes;
+// 名前空間を言い換える。
+// use Dotinstall\MyPHPApp as MyPHPApp;
+// use Dotinstall\MyPHPApp;
 
-  // メソッド
-  public function show(){
-    printf('%s(%d)' . PHP_EOL, $this->text, $this->likes );
+require('Post.php');
+
+try{
+  $posts[0] = new Post('');
+  $posts[1] = new Post('Hello again');
+  
+  
+  foreach ($posts as $post) {
+    $post->show();
   }
+}catch (Exception $e){
+  echo $e -> getMessage() . PHP_EOL;
 }
 
-$posts = [];
-// $posts[0] = ['text' => 'hello', 'likes' => 0];
-$posts[0] = new Post();   // インスタンス
-$posts[0] -> text = 'hello';
-$posts[0] -> likes = 0;
+// $posts[0] = new Dotinstall\MyPHPApp\Post('hello');
+// $posts[1] = new Dotinstall\MyPHPApp\Post('hello again');
+// $posts[0] = new MyPHPApp\Post('hello');
+// $posts[1] = new MyPHPApp\Post('hello again');
 
-// $posts[1] = ['text' => 'hello again', 'likes' => 0];
-
-$posts[1] = new Post();   // インスタンス
-$posts[1] -> text = 'hello again';
-$posts[1] -> likes = 0;
-
-$posts[0] -> show();
-$posts[1] -> show();
